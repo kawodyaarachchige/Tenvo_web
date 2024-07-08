@@ -67,11 +67,6 @@ body {
     color: #765341;
 }
 
-
-/* Home section */
-
-
-
 .navTrigger {
     display: none;
 }
@@ -82,16 +77,6 @@ body {
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
 }
-
-
-/* Media qurey section */
-
-
-
-
-/* Animation */
-/* Inspiration taken from Dicson https://codemyui.com/simple-hamburger-menu-x-mark-animation/ */
-
 .navTrigger {
     cursor: pointer;
     width: 30px;
