@@ -732,6 +732,18 @@ footer .social-links li a:hover {
     .add-to-cart {
         margin-top: 10px;
     }
+    #home {
+        padding: 160px 20px;
+    }
+    .big-text {
+        margin-top: 20px;
+    }
+
+    .big-text h2 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        animation: fadeInUp 1s ease-in-out;
+    }
 }
 
 
@@ -739,5 +751,11 @@ footer .social-links li a:hover {
     .map-container {
         max-width: 50%;
         margin: 20px auto;
+    }
+}
+
+@media (max-width: 576px) {
+    #home {
+        padding: 120px 20px; /* Further adjust padding for mobile */
     }
 }
