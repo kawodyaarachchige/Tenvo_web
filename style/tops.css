@@ -1,15 +1,192 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
-* {
+body {
+    background-color: #f9f9f9;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    overflow-x: hidden;
-
-}
-
-body {
     font-family: 'Quicksand', sans-serif;
 }
+
+header {
+    background-color: #241916;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.filters {
+    margin-top: 10px;
+}
+
+.filters label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.filters select {
+    font-size: 1rem;
+    padding: 5px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.text {
+    text-align: center;
+    color: #fff;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    text-shadow: 1px 1px 1px #000;
+}
+
+/* Top collection section */
+#top-collection {
+    padding: 50px 0;
+}
+
+#top-collection h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.tops-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.top {
+    background: #fff;
+    border-radius: 10px;
+    width: 45%;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border: 2px solid #997D5A;
+    transition: transform 0.3s;
+}
+
+.top:hover {
+    transform: scale(1.02);
+}
+
+.top-image img {
+    width: 70%;
+    height: auto;
+    padding: 10px;
+}
+
+.top-details {
+    margin-right: 30px;
+    padding: 10px;
+}
+
+.top-details h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.top-details .price {
+    color: #ff6347;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.top-details .description {
+    margin-bottom: 20px;
+}
+
+.quantity-add-to-cart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-right: 2px;
+}
+
+.quantity label {
+    margin-right: 10px;
+}
+
+.quantity input {
+    width: 30px;
+    padding: 5px;
+    font-size: 1em;
+}
+
+.add-to-cart {
+    padding: 5px 10px;
+    font-size: 1em;
+    border: none;
+    background: #ff6347;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.add-to-cart:hover {
+    background-color: #997D5A;
+}
+
+.favorite-btn {
+    cursor: pointer;
+    color: #333;
+    font-size: 0.8em;
+    margin-top: 10px;
+}
+
+.favorite-btn i {
+    margin-right: 5px;
+}
+
+.favorite-btn:hover {
+    text-decoration: underline;
+}
+
+.popular {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6347;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    border-radius: 5px;
+}
+.popular:hover {
+    background-color: #997D5A;
+}
+
 
 a {
     text-decoration: none;
@@ -633,137 +810,73 @@ footer .social-links li a:hover {
     color: #ffcc00;
 }
 
-/* Media Queries */
-@media screen and (max-width: 768px) {
-    .nav .main_list {
-        display: none;
-        width: 100%;
-        background: #fff;
-        position: absolute;
-        top: 65px;
-        left: 0;
-    }
 
-    .nav .main_list ul {
-        flex-direction: column;
-        width: 100%;
-    }
 
-    .nav .main_list ul li {
-        width: 100%;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #top-collection h2 {
         text-align: center;
-        padding: 1rem 0;
+        font-size: 1.5em;
+        margin-bottom: 20px;
     }
 
-    .navTrigger {
-        display: flex;
+    .top {
+        width: 60%;
+        flex-direction: column;
     }
 
-    .nav .main_list.show_list {
-        display: block;
-    }
-    .feature-cards, .testimonials, .cards-list {
+    .tops-list {
         flex-direction: column;
         align-items: center;
     }
 
-    .feature-card, .testimonial, .card {
-        margin: 10px;
-        width: 90%;
-    }
-    .news-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .news-item {
-        width: 90%;
-    }
-    .testimonials {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .testimonial {
-        max-width: 100%;
-    }
-    .arrivals-list {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .arrival-item {
-        width: 90%;
-        flex-direction: column;
-    }
-
-    .arrival-image img {
+    .top-image img {
         width: 100%;
     }
 
-    .arrival-details {
-        text-align: center;
+    .quantity {
+        margin-right: 3px;
     }
 
     .quantity-add-to-cart {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .add-to-cart {
-        margin-top: 10px;
-    }
-    #home {
-        padding: 160px 20px;
-    }
-    .big-text {
-        margin-top: 20px;
+        font-size: 0.9em;
     }
 
-    .big-text h2 {
-        font-size: 1.3rem;
+    .logo {
+        position: static;
         margin-bottom: 10px;
-        animation: fadeInUp 1s ease-in-out;
     }
-    .running-text p {
-        font-size: 1.5rem;
+
+    .filters {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filters label {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .filters select {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    nav ul {
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 0;
+        margin-bottom: 5px;
     }
 }
 
-
-@media screen and (min-width: 769px) {
-    .map-container {
-        max-width: 50%;
-        margin: 20px auto;
-    }
-}
-
-@media (max-width: 576px) {
-    #home {
-        padding: 120px 20px;
-    }
-}
-@media only screen and (max-width: 450px) {
-    #home {
-        padding: 140px 10px;
-    }
-    .big-text {
-        margin-top: 20px;
-    }
-
-    .big-text h2 {
-        font-size: 1rem;
-        margin-bottom: 10px;
-        animation: fadeInUp 1s ease-in-out;
-    }
-    .container1 h1 {
-        font-weight: bold;
-        font-size: 2.1rem;
-        margin-bottom: 10px;
-        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-    }
-    .running-text p{
-        font-size: 0.8rem;
-        padding: 50%;
-    }
-    .navTrigger {
-        display: block;}}
