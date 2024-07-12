@@ -108,6 +108,7 @@ a {
 #home {
     padding: 240px 20px;
     background-image: url("assets/videos/Twice_MayCover2024_PROMO (1).gif");
+
     background-position: center;
     background-size: cover;
     position: relative;

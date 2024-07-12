@@ -2,9 +2,212 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Pants Collection</title>
+    <link rel="stylesheet" href="../style/collection.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+<header style="background-color: #997D5A;">
+    <div class="logo">
+        <span>Tenvo</span>
+    </div>
+    <h1>Our Pant Collection - Pants</h1>
+    <text><p>Buy One Get One Free!</p></text>
+    <div class="filters">
+        <label for="sort">Sort by:</label>
+        <select id="sort">
+            <option value="lowest">Price: Low to High</option>
+            <option value="highest">Price: High to Low</option>
+            <option value="popular">Popular Tops</option>
+            <option value="new">New Arrivals</option>
+            <option value="sold-out">Sold Out</option>
+        </select>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+        </ul>
+    </nav>
+</header>
+<section id="top-collection">
+    <div class="container">
+        <h2>Our Top Collection - Tops</h2>
+        <div class="tops-list">
+            <div class="top" id="top1">
+                <div class="top-image">
+                    <img src="../assets/images/p1.jpg" alt="Top 1">
+                </div>
+                <div class="top-details">
+                    <span class="popular" style="display: none;">Popular</span>
+                    <h3>Layered Palazzo Pant</h3>
+                    <p class="price">$34.99</p>
+                    <p class="description">High waist Layered Ruffle Hem Super Palazzo Pant.</p>
+                    <div class="quantity-add-to-cart">
+                        <div class="quantity">
+                            <label for="quantity1">Quantity:</label>
+                            <input type="number" id="quantity1" name="quantity" min="1" value="1">
+                        </div>
+                        <button class="add-to-cart"><img src="../assets/images/cart.png" alt="Add to Cart"></button>
+                    </div>
+                    <span class="favorite-btn" data-id="1"><i class="far fa-heart"></i> Add to Favorites</span>
+                </div>
+            </div>
 
+            <div class="top" id="top2">
+                <div class="top-image">
+                    <img src="../assets/images/p2.jpg" alt="Top 1">
+                </div>
+                <div class="top-details">
+                    <span class="popular" style="display: none;">Popular</span>
+                    <h3>Skinny Trouser </h3>
+                    <p class="price">$30.00</p>
+                    <p class="description">Gathering Front Skinny Pant.</p>
+                    <div class="quantity-add-to-cart">
+                        <div class="quantity">
+                            <label for="quantity2">Quantity:</label>
+                            <input type="number" id="quantity2" name="quantity" min="1" value="1">
+                        </div>
+                        <button class="add-to-cart"><img src="../assets/images/cart.png"></button>
+                    </div>
+                    <span class="favorite-btn" data-id="2"><i class="far fa-heart"></i> Add to Favorites</span>
+                </div>
+            </div>
+            <div class="top" id="top3">
+                <div class="top-image">
+                    <img src="../assets/images/p3.webp" alt="Top 1">
+                </div>
+                <div class="top-details">
+                    <span class="popular" style="display: none;">Popular</span>
+                    <h3>Flare Slim Fit Pant</h3>
+                    <p class="price">$49.99</p>
+                    <p class="description">Sexy High waist slim fit flared pant.</p>
+                    <div class="quantity-add-to-cart">
+                        <div class="quantity">
+                            <label for="quantity2">Quantity:</label>
+                            <input type="number" id="quantity3" name="quantity" min="1" value="1">
+                        </div>
+                        <button class="add-to-cart"><img src="../assets/images/cart.png"></button>
+                    </div>
+                    <span class="favorite-btn" data-id="3"><i class="far fa-heart"></i> Add to Favorites</span>
+                </div>
+            </div>
+            <div class="top" id="top4">
+                <div class="top-image">
+                    <img src="../assets/images/p4.jpg" alt="Top 1">
+                </div>
+                <div class="top-details">
+                    <span class="popular" style="display: none;">Popular</span>
+                    <h3>Flare Pant</h3>
+                    <p class="price">$29.99</p>
+                    <p class="description">An elegant Pant perfect style  with bottom flared.</p>
+                    <div class="quantity-add-to-cart">
+                        <div class="quantity">
+                            <label for="quantity2">Quantity:</label>
+                            <input type="number" id="quantity4" name="quantity" min="1" value="1">
+                        </div>
+                        <button class="add-to-cart"><img src="../assets/images/cart.png"></button>
+                    </div>
+                    <span class="favorite-btn" data-id="4"><i class="far fa-heart"></i> Add to Favorites</span>
+                </div>
+            </div>
+            <div class="top" id="top5">
+                <div class="top-image">
+                    <img src="../assets/images/p5.webp" alt="Top 1">
+                </div>
+                <div class="top-details">
+                    <span class="popular" style="display: none;">Popular</span>
+                    <h3>Crisscross Tie Back Pant </h3>
+                    <p class="price">$35.00</p>
+                    <p class="description">An elegant Pant perfect style with tie</p>
+                    <div class="quantity-add-to-cart">
+                        <div class="quantity">
+                            <label for="quantity2">Quantity:</label>
+                            <input type="number" id="quantity5" name="quantity" min="1" value="1">
+                        </div>
+                        <button class="add-to-cart"><img src="../assets/images/cart.png"></button>
+                    </div>
+                    <span class="favorite-btn" data-id="5"><i class="far fa-heart"></i> Add to Favorites</span>
+                </div>
+            </div>
+            <div class="top" id="top6">
+                <div class="top-image">
+                    <img src="../assets/images/p6.webp" alt="Top 1">
+                </div>
+                <div class="top-details">
+                    <span class="popular" style="display: none;">Popular</span>
+                    <h3>Cargo Pant</h3>
+                    <p class="price">$24.00</p>
+                    <p class="description">Pant with stylish Pocket detail.</p>
+                    <div class="quantity-add-to-cart">
+                        <div class="quantity">
+                            <label for="quantity2">Quantity:</label>
+                            <input type="number" id="quantity6" name="quantity" min="1" value="1">
+                        </div>
+                        <button class="add-to-cart"><img src="../assets/images/cart.png"></button>
+                    </div>
+                    <span class="favorite-btn" data-id="6"><i class="far fa-heart"></i> Add to Favorites</span>
+                </div>
+            </div>
+            <div class="top" id="top7">
+                <div class="top-image">
+                    <img src="../assets/images/p7.webp" alt="Top 1">
+                </div>
+                <div class="top-details">
+                    <span class="popular" style="display: none;">Popular</span>
+                    <h3>Palazzo Pant</h3>
+                    <p class="price">$39.99</p>
+                    <p class="description">An elegant white blouse perfect for any occasion.</p>
+                    <div class="quantity-add-to-cart">
+                        <div class="quantity">
+                            <label for="quantity2">Quantity:</label>
+                            <input type="number" id="quantity7" name="quantity" min="1" value="1">
+                        </div>
+                        <button class="add-to-cart"><img src="../assets/images/cart.png"></button>
+                    </div>
+                    <span class="favorite-btn" data-id="7"><i class="far fa-heart"></i> Add to Favorites</span>
+                </div>
+            </div>
+            <div class="top" id="top8">
+                <div class="top-image">
+                    <img src="../assets/images/p8.webp" alt="Top 1">
+                </div>
+                <div class="top-details">
+                    <span class="popular" style="display: none;">Popular</span>
+                    <h3>Print Wide Leg</h3>
+                    <p class="price">$19.99</p>
+                    <p class="description">Printed floral wide leg with customize colors</p>
+                    <div class="quantity-add-to-cart">
+                        <div class="quantity">
+                            <label for="quantity2">Quantity:</label>
+                            <input type="number" id="quantity8" name="quantity" min="1" value="1">
+                        </div>
+                        <button class="add-to-cart"><img src="../assets/images/cart.png"></button>
+                    </div>
+                    <span class="favorite-btn" data-id="8"><i class="far fa-heart"></i> Add to Favorites</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section><!-----footer----->
+<footer>
+    <div class="container4">
+        <p>&copy; 2024 Tenvo Collections. All Rights Reserved.</p>
+        <ul class="social-links">
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+    </div>
+</footer>
+
+
+
+
+<script src="../assets/lib/jquery-3.7.1.min.js"></script>
+<script src="../script/topsScript.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>
