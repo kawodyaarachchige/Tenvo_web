@@ -71,7 +71,7 @@ $(document).ready(function() {
             nav.css('background-color', '#241916');
             nav.css('box-shadow', '0 4px 8px rgba(0,0,0,0.2)');
         } else {
-            nav.css('background-color', 'rgba(252, 251, 251, 0.8)');
+            nav.css('background-color', 'rgb(3,3,3)');
             nav.css('box-shadow', '0 2px 4px rgba(0,0,0,0.1)');
         }
     });
