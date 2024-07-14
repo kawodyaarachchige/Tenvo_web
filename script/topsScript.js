@@ -1,3 +1,4 @@
+// Add event listener to the sort dropdown
 document.addEventListener('DOMContentLoaded', function() {
     const sortDropdown = document.getElementById('sort');
 

@@ -3,11 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart - Tenvo</title>
+    <meta name="keywords" content="Shopping Cart">
+    <meta name="author" content="Your Name">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="cart.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-IzX9jWYEVPI8dCcsGcDk4C2dJx8Bf4+zojv4k4+2gkFgTYGt2Y5AfbEX9O6PP2AdpFh8F0TXWghy5v4GKx7XVQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
+<header>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+    </div>
+</header>
+<section class="cart">
+    <div class="container">
+        <div id="cart-items" class="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-summary">
+            <h2>Cart Summary</h2>
+            <div class="total">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button id="checkout-btn">Proceed to Checkout</button>
+            <button id="clear-cart-btn">Clear Cart</button>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <p>&copy; 2023 Tenvo Collections. All rights reserved.</p>
+    </div>
+</footer>
+<script src="../assets/lib/jquery-3.7.1.min.js"></script>
+<script src="cart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>
