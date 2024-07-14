@@ -4,27 +4,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const checkoutBtn = document.getElementById('checkout-btn');
     const clearCartBtn = document.getElementById('clear-cart-btn');
 
-    const deleteButtons = document.querySelectorAll('.delete-btn');
-
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const cartItem = this.parentElement; // Get the parent cart item
-            cartItem.remove(); // Remove the cart item from DOM
-            updateCartTotal(); // Update the total price after deletion (if applicable)
-        });
-    });
-
     // Function to display cart items
     function displayCartItems() {
         cartItemsContainer.innerHTML = ''; // Clear existing items
 
         let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
+        if (cartItems.length === 0) {
+            cartItemsContainer.innerHTML = '<p class="textpara">Your cart is empty. Please shop your favourite items.</p>';
+            cartTotalElement.textContent = '$0.00';
+            checkoutBtn.style.display = 'none'; // Hide checkout button when cart is empty
+            clearCartBtn.style.display = 'none'; // Hide clear cart button when cart is empty
+            return;
+        }
+
+        checkoutBtn.style.display = 'block'; // Show checkout button when cart has items
+        clearCartBtn.style.display = 'block'; // Show clear cart button when cart has items
+
         cartItems.forEach(item => {
             const cartItemElement = document.createElement('div');
             cartItemElement.classList.add('cart-item');
             cartItemElement.innerHTML = `
-               <div class="cart-item-image"></div><img src="${getImageFilename(item.name)}" alt="${item.name}"></div>
+               <div class="cart-item-image"><img src="${getImageFilename(item.name)}" alt="${item.name}"></div>
                 <div class="cart-item-details">
                     <h3 class="cart-item-title">${item.name}</h3>
                     <p class="cart-item-price">$${item.price.toFixed(2)}</p>
@@ -32,25 +33,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div>
                 <button class="delete-btn">Delete</button>
-</div>
+                </div>
             `;
             // Add delete functionality to each delete button
             const deleteButton = cartItemElement.querySelector('.delete-btn');
             deleteButton.addEventListener('click', function() {
-                // Remove item from cart
-                cartItems = cartItems.filter(cartItem => cartItem.name !== item.name);
-                localStorage.setItem('cart', JSON.stringify(cartItems));
-
-                // Update cart display
-                displayCartItems();
-
                 // Show confirmation message
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Removed',
-                    text: 'Item removed from cart successfully!',
-                    showConfirmButton: false,
-                    timer: 1500
+                    title: 'Are you sure?',
+                    text: "Do you really want to remove this item from the cart?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Remove item from cart
+                        cartItems = cartItems.filter(cartItem => cartItem.name !== item.name);
+                        localStorage.setItem('cart', JSON.stringify(cartItems));
+
+                        // Update cart display
+                        displayCartItems();
+
+                        // Show success message
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Removed',
+                            text: 'Item removed from cart successfully!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
                 });
             });
 
@@ -170,21 +185,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (shippingResult.isConfirmed) {
                         const { name, address, city, postalCode, country } = shippingResult.value;
 
-                        // Optional: Perform shipping processing logic here
-
-                        // Third Swal for Order Confirmation
+                        // Optional: Perform shipping processing logic here hee hee:{
                         Swal.fire({
-                            title: 'Order Confirmed!',
-                            imageUrl: '../../assets/images/order-confirmation.png',
-                            text: 'Your order has been confirmed and is being processed.',
-                            icon: 'success',
-                            confirmButtonText: 'OK'
+                            title: 'Order Processing',
+                            text: 'Your order is being processed. Thank you for shopping with us!',
+                            icon: 'info',
+                            showConfirmButton: false,
+                            timer: 2000
                         });
 
                         // Clear cart after successful order confirmation
                         localStorage.removeItem('cart');
                         displayCartItems();
+
+                        // Fourth Swal to Thank User
+                        Swal.fire({
+                            title: 'Thank You!',
+                            text: 'Your order has been successfully placed.',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
                     }
+
                 });
             }
         });
@@ -234,5 +256,3 @@ function getImageFilename(itemName) {
 
     return imageMap[itemName] || '../../assets/images/default-image.jpg'; // Default image if not found
 }
-
-
