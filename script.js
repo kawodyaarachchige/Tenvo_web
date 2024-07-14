@@ -1,12 +1,41 @@
 $(document).ready(function() {
-    console.log("Document ready!");
+    // Function to toggle navigation
+    function toggleNavigation() {
+        var navLinks = $('.navlinks');
+        var navTrigger = $('.navTrigger i');
 
-    // Toggle the active class and show/hide the menu
+        navLinks.toggleClass('show_list');
+        navTrigger.toggleClass('active');
+    }
+
+    // Toggle navigation on click
     $('.navTrigger').click(function() {
-        $(this).toggleClass('active');
-        $("#mainListDiv").toggleClass("show_list");
+        toggleNavigation();
     });
 
+    // Function to close navigation
+    function closeNavigation() {
+        var navLinks = $('.navlinks');
+        var navTrigger = $('.navTrigger i');
+
+        if (navLinks.hasClass('show_list')) {
+            navLinks.removeClass('show_list');
+            navTrigger.removeClass('active');
+        }
+    }
+
+    // Close navigation on outside click
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('.navTrigger').length &&
+            !$(event.target).closest('.navlinks').length) {
+            closeNavigation();
+        }
+    });
+
+    // Close navigation on navigation link click
+    $('.navlinks li a').click(function() {
+        closeNavigation();
+    });
     // Function to check if an element is in the viewport
     function isElementInViewport(el) {
         var rect = el.getBoundingClientRect();
@@ -51,21 +80,86 @@ $(document).ready(function() {
         const quantityInput = $(this).closest('.quantity-add-to-cart').find('input[type="number"]');
         const quantity = quantityInput.val();
         Swal.fire({
-            icon: 'success',
             title: 'Item added to cart',
-            text: `Quantity: ${quantity}`
+            text: `Quantity: ${quantity}`,
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
+            Swal.fire({
+                title: 'Shipping Details Form',
+                imageUrl: '../../assets/images/ship.png',
+                html: `
+                <style>
+                    #shipping-form {
+                        margin-top: 10px;
+                    }
+                    #shipping-form label {
+                        display: block;
+                        margin-bottom: 5px;
+                    }
+                    #shipping-form input[type="text"] {
+                        width: 100%;
+                        padding: 8px;
+                        font-size: 1em;
+                        margin-bottom: 10px;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                    }
+                </style>
+                <form id="shipping-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+                    <label for="postal-code">Postal Code:</label>
+                    <input type="text" id="postal-code" name="postal-code" required>
+                    <label for="country">Country:</label>
+                    <input type="text" id="country" name="country" required>
+                </form>
+            `,
+                showCancelButton: true,
+                confirmButtonText: 'Confirm Shipping',
+                cancelButtonText: 'Cancel',
+                preConfirm: () => {
+                    const name = Swal.getPopup().querySelector('#name').value;
+                    const address = Swal.getPopup().querySelector('#address').value;
+                    const city = Swal.getPopup().querySelector('#city').value;
+                    const postalCode = Swal.getPopup().querySelector('#postal-code').value;
+                    const country = Swal.getPopup().querySelector('#country').value;
+
+                    if (!name || !address || !city || !postalCode || !country) {
+                        Swal.showValidationMessage(`Please fill out all fields`);
+                    }
+
+                    return { name, address, city, postalCode, country };
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const { name, address, city, postalCode, country } = result.value;
+                    // Show final confirmation popup for shipping
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Shipping is confirmed!',
+                        text: `Shipping details:
+                        Name: ${name},
+                        Address: ${address},
+                        City: ${city},
+                        Postal Code: ${postalCode},
+                        Country: ${country}`,
+                        imageUrl: 'images/success.png',
+                    });
+                }
+            });
         });
     });
+    // Add click event listener to each card link
     $(document).ready(function() {
-        // Handle click on card links
         $('.card-link').click(function(event) {
             // Prevent default action (e.g., following the link)
             event.preventDefault();
-
-            // Get the URL from the card's href attribute
             var url = $(this).attr('href');
-
-            // Navigate to the URL
             window.location.href = url;
         });
     });
