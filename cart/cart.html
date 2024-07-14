@@ -4,20 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Shopping Cart">
-    <meta name="author" content="Your Name">
+    <meta name="author" content="Tharu Arachchige">
     <title>Shopping Cart</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,700" rel="stylesheet">
 </head>
 <body>
 <header>
     <div class="container">
+        <div class="logo">Tenvo</div>
         <h1>Shopping Cart</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+        </nav>
     </div>
 </header>
-<section class="cart">
-    <div class="container">
+
+<section id="cart" class="cart">
+    <div class="container2">
         <div id="cart-items" class="cart-items">
             <!-- Cart items will be dynamically added here -->
         </div>
@@ -32,10 +40,16 @@
         </div>
     </div>
 </section>
+
+<!---------Footer------->
 <footer>
-    <div class="container">
         <p>&copy; 2023 Tenvo Collections. All rights reserved.</p>
-    </div>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+        </div>
 </footer>
 <script src="../assets/lib/jquery-3.7.1.min.js"></script>
 <script src="cart.js"></script>

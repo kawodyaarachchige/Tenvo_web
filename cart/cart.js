@@ -4,6 +4,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const checkoutBtn = document.getElementById('checkout-btn');
     const clearCartBtn = document.getElementById('clear-cart-btn');
 
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const cartItem = this.parentElement; // Get the parent cart item
+            cartItem.remove(); // Remove the cart item from DOM
+            updateCartTotal(); // Update the total price after deletion (if applicable)
+        });
+    });
+
     // Function to display cart items
     function displayCartItems() {
         cartItemsContainer.innerHTML = ''; // Clear existing items
@@ -14,13 +24,36 @@ document.addEventListener('DOMContentLoaded', function() {
             const cartItemElement = document.createElement('div');
             cartItemElement.classList.add('cart-item');
             cartItemElement.innerHTML = `
-                <img src="${getImageFilename(item.name)}" alt="${item.name}">
+               <div class="cart-item-image"></div><img src="${getImageFilename(item.name)}" alt="${item.name}"></div>
                 <div class="cart-item-details">
                     <h3 class="cart-item-title">${item.name}</h3>
                     <p class="cart-item-price">$${item.price.toFixed(2)}</p>
                     <p class="cart-item-quantity">Quantity: ${item.quantity}</p>
                 </div>
+                <div>
+                <button class="delete-btn">Delete</button>
+</div>
             `;
+            // Add delete functionality to each delete button
+            const deleteButton = cartItemElement.querySelector('.delete-btn');
+            deleteButton.addEventListener('click', function() {
+                // Remove item from cart
+                cartItems = cartItems.filter(cartItem => cartItem.name !== item.name);
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+
+                // Update cart display
+                displayCartItems();
+
+                // Show confirmation message
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Removed',
+                    text: 'Item removed from cart successfully!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+
             cartItemsContainer.appendChild(cartItemElement);
         });
 
@@ -30,39 +63,38 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event listener for checkout button
-    // Event listener for checkout button
     checkoutBtn.addEventListener('click', function() {
         // First Swal for Payment Details
         Swal.fire({
             title: 'Payment Details',
             imageUrl: '../../assets/images/payment.png',
             html: `
-        <style>
-            #payment-form {
-                margin-top: 10px;
-            }
-            #payment-form label {
-                display: block;
-                margin-bottom: 5px;
-            }
-            #payment-form input[type="text"] {
-                width: 100%;
-                padding: 8px;
-                font-size: 1em;
-                margin-bottom: 10px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-            }
-        </style>
-        <form id="payment-form">
-            <label for="card-number">Card Number:</label>
-            <input type="text" id="card-number" name="card-number" required>
-            <label for="expiry">Expiry Date:</label>
-            <input type="text" id="expiry" name="expiry" required>
-            <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" name="cvv" required>
-        </form>
-        `,
+                <style>
+                    #payment-form {
+                        margin-top: 10px;
+                    }
+                    #payment-form label {
+                        display: block;
+                        margin-bottom: 5px;
+                    }
+                    #payment-form input[type="text"] {
+                        width: 100%;
+                        padding: 8px;
+                        font-size: 1em;
+                        margin-bottom: 10px;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                    }
+                </style>
+                <form id="payment-form">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" required>
+                    <label for="expiry">Expiry Date:</label>
+                    <input type="text" id="expiry" name="expiry" required>
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                </form>
+            `,
             showCancelButton: true,
             confirmButtonText: 'Confirm Payment',
             cancelButtonText: 'Cancel',
@@ -88,36 +120,36 @@ document.addEventListener('DOMContentLoaded', function() {
                     title: 'Shipping Details',
                     imageUrl: '../../assets/images/ship.png',
                     html: `
-                <style>
-                    #shipping-form {
-                        margin-top: 10px;
-                    }
-                    #shipping-form label {
-                        display: block;
-                        margin-bottom: 5px;
-                    }
-                    #shipping-form input[type="text"] {
-                        width: 100%;
-                        padding: 8px;
-                        font-size: 1em;
-                        margin-bottom: 10px;
-                        border: 1px solid #ccc;
-                        border-radius: 4px;
-                    }
-                </style>
-                <form id="shipping-form">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="address">Address:</label>
-                    <input type="text" id="address" name="address" required>
-                    <label for="city">City:</label>
-                    <input type="text" id="city" name="city" required>
-                    <label for="postal-code">Postal Code:</label>
-                    <input type="text" id="postal-code" name="postal-code" required>
-                    <label for="country">Country:</label>
-                    <input type="text" id="country" name="country" required>
-                </form>
-                `,
+                    <style>
+                        #shipping-form {
+                            margin-top: 10px;
+                        }
+                        #shipping-form label {
+                            display: block;
+                            margin-bottom: 5px;
+                        }
+                        #shipping-form input[type="text"] {
+                            width: 100%;
+                            padding: 8px;
+                            font-size: 1em;
+                            margin-bottom: 10px;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                        }
+                    </style>
+                    <form id="shipping-form">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" required>
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" required>
+                        <label for="postal-code">Postal Code:</label>
+                        <input type="text" id="postal-code" name="postal-code" required>
+                        <label for="country">Country:</label>
+                        <input type="text" id="country" name="country" required>
+                    </form>
+                    `,
                     showCancelButton: true,
                     confirmButtonText: 'Confirm Shipping',
                     cancelButtonText: 'Cancel',
@@ -138,45 +170,54 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (shippingResult.isConfirmed) {
                         const { name, address, city, postalCode, country } = shippingResult.value;
 
-                        // Optional: Perform shipping logic here
+                        // Optional: Perform shipping processing logic here
 
-                        // Show final confirmation popup for shipping
+                        // Third Swal for Order Confirmation
                         Swal.fire({
+                            title: 'Order Confirmed!',
+                            imageUrl: '../../assets/images/order-confirmation.png',
+                            text: 'Your order has been confirmed and is being processed.',
                             icon: 'success',
-                            title: 'Shipping is confirmed!',
-                            text: `Shipping details:
-                        Name: ${name},
-                        Address: ${address},
-                        City: ${city},
-                        Postal Code: ${postalCode},
-                        Country: ${country}`,
-                            imageUrl: '../../assets/images/success.png', // Adjust path as needed
-                        }).then(() => {
-                            // Optional: Redirect to thank you page or update UI after successful checkout
-                            // Example: window.location.href = 'thankyou.html';
+                            confirmButtonText: 'OK'
                         });
+
+                        // Clear cart after successful order confirmation
+                        localStorage.removeItem('cart');
+                        displayCartItems();
                     }
                 });
             }
         });
     });
 
-
     // Event listener for clear cart button
     clearCartBtn.addEventListener('click', function() {
-        localStorage.removeItem('cart'); // Clear cart items from localStorage
-        displayCartItems(); // Update cart display
+        Swal.fire({
+            title: 'Clear Cart',
+            text: 'Are you sure you want to clear the cart?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, clear it!',
+            cancelButtonText: 'Cancel'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem('cart');
+                displayCartItems();
+                Swal.fire('Cleared!', 'Your cart has been cleared.', 'success');
+            }
+        });
     });
 
-    // Initial display of cart items
+    // Initial call to display cart items on page load
     displayCartItems();
 });
+
 
 function getImageFilename(itemName) {
     const imageMap = {
         'Snow crop': '../../assets/images/newarrivl.jpg',
-        'Maxui Dress': '../../assets/images/newarrivl1.webp',
-        'Floral Tank Top': '../../assets/images/newarrivl2.jpg',
+        'Maxi Dress': '../../assets/images/newarrivl1.webp',
+        'Flora Tank Top': '../../assets/images/newarrivl2.jpg',
         'Disty Wrap Pant': '../../assets/images/newarrivl3.webp',
         'Dot Mesh Overlay Skirt': '../../assets/images/newarrivl4.jpg',
         'Squre Crop':'../../assets/images/t1.webp',

@@ -91,12 +91,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Function to simulate adding item to cart (replace with actual cart logic)
     function alertFavorite(name, action) {
-        swal.fire(`Added ${name} to favorites.`, `You can ${action} them anytime.`, 'success');
+        Swal.fire(`Added ${name} to favorites.`, `You can ${action} them anytime.`, 'success');
     }
 
-    // Function to simulate adding item to cart (replace with actual cart logic)
+    // Function to add item to cart and save to localStorage
     function addToCart(name, price, quantity) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const existingItemIndex = cart.findIndex(item => item.name === name);
+
+        if (existingItemIndex !== -1) {
+            // Item already in cart, update quantity
+            cart[existingItemIndex].quantity += quantity;
+        } else {
+            // New item, add to cart
+            cart.push({ name, price, quantity });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
         const total = price * quantity;
         Swal.fire(`Added ${quantity} ${name}(s) to cart. Total: $${total.toFixed(2)}`);
     }
