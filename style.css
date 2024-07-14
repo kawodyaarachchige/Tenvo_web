@@ -766,20 +766,20 @@ footer p {
 
 @media (max-width: 576px) {
     #home h1 {
-        font-size: 2em;
+        font-size: 1em;
     }
 
     .container1 h1 {
-        font-size: 2em;
+        font-size: 0.9em;
     }
 
     .big-text h2 {
-        font-size: 1.5em;
+        font-size: 0.8em;
     }
 
     #shop {
         padding: 10px 20px;
-        font-size: 1em;
+        font-size: 0.8em;
     }
 }
 /*

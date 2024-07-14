@@ -232,8 +232,3 @@ footer p {
 #checkout-btn,#clear-cart-btn{
     width: 200px;
 }
-@media (max-width: 768px) {
-    .cart-summary {
-        width: 100%;
-    }
-}
