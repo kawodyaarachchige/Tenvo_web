@@ -100,6 +100,9 @@ a {
     text-decoration: none;
     color: #333;
 }
+.cart-icon:hover {
+    color: #ff6347;
+}
 
 .cart-icon i {
     margin-right: 5px;

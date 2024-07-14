@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     <title>Tenvo Collections</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
 <!---------Nav Bar------->
@@ -33,10 +33,10 @@
             </a>
         </div>
         <span class="navTrigger">
-                <i></i>
-                <i></i>
-                <i></i>
-            </span>
+            <i></i>
+            <i></i>
+            <i></i>
+        </span>
     </div>
 </nav>
 <!---------Home Section------->
@@ -49,8 +49,8 @@
         </div>
         <div class="big-text">
             <h2>Discover the Latest Trends</h2>
-            <form class="search-bar">
-                <input type="text" placeholder="Search">
+            <form id="search-form" class="search-bar">
+                <input type="text" id="search-input" placeholder="Search">
                 <button type="submit"><i class="fas fa-search"></i></button>
             </form>
         </div>
@@ -224,7 +224,7 @@
 <!---------Testimonials Section------->
 <section id="testimonials">
     <div class="container3">
-        <h2>What Our Customers Say</h2>
+        <h2 class="animate__heartBeat">What Our Customers Say</h2>
         <div class="testimonials">
             <div class="testimonial">
                 <div class="stars">
@@ -254,7 +254,7 @@
 <!---------Contact Section---------->
 <section id="map">
     <div class="container2">
-        <h2>Contact Us</h2>
+        <h2 class="animate__backInDown">Contact Us</h2>
         <div class="location">
             <div class="map">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4722870117665!2d106.7017559152604!3d10.7626220923326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175292922453df1%3A0x2f03a5208a524e1b!2sBitexco%20Financial%20Tower!5e0!3m2!1sen!2s!4v1618721924849!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -281,12 +281,8 @@
         </div>
     </div>
 </footer>
-<script>
-</script>
 <script src="assets/lib/jquery-3.7.1.min.js"></script>
 <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
 </body>
 </html>

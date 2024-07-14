@@ -7,25 +7,52 @@ body {
 }
 
 header {
-    background-color: #241916;
+    background-color: rgba(43, 29, 27, 0.83);
     color: #fff;
     padding: 20px;
     text-align: center;
     position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
 .logo {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 1.5rem;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem; /* Increased font size */
     font-weight: bold;
-    color: #fff;
+    color: #030303; /* Updated color */
     text-transform: uppercase;
 }
 
+h1 {
+    font-size: 2.5rem; /* Updated font size */
+    margin: 0;
+    font-weight: 700;
+}
+
+.promo-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 15s linear infinite;
+    font-size: 1.2rem;
+    color: #ffcc00;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    white-space: nowrap; /* Ensure the text stays on one line */
+    margin: 10px 0; /* Add some margin for spacing */
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
+}
 .filters {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .filters label {
@@ -37,11 +64,16 @@ header {
 .filters select {
     font-size: 1rem;
     padding: 5px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 20px 0 0 0;
+    text-align: center;
 }
 
 nav ul li {
@@ -52,14 +84,14 @@ nav ul li {
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
 }
 
-.text {
-    text-align: center;
-    color: #fff;
-    font-size: 1.2rem;
-    margin-top: 10px;
-    text-shadow: 1px 1px 1px #000;
+nav ul li a:hover {
+    background-color: #b0b6b0; /* Updated hover color */
+    color: #3E4A49; /* Updated text color on hover */
+    border-radius: 5px;
 }
 
 /* Top collection section */
@@ -244,6 +276,48 @@ footer .social-links li a:hover {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .logo {
+        position: static;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .promo-text {
+        font-size: 1rem;
+    }
+
+    .filters {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filters label {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .filters select {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    nav ul {
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 0;
+        margin-bottom: 5px;
+    }
+
+    nav ul li a {
+        display: block;
+    }
     #top-collection h2 {
         text-align: center;
         font-size: 1.5em;
@@ -307,6 +381,15 @@ footer .social-links li a:hover {
         display: block;
         margin: 0;
         margin-bottom: 5px;
+    }
+}
+@media (max-width: 576px) {
+    .promo-text{
+        font-size: 0.9em;
+
+        h1{
+            font-size: 1.5em;
+        }
     }
 }
 
