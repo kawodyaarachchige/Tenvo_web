@@ -5,17 +5,41 @@ Welcome to Tenvo Collections, an online clothing store built using HTML, CSS, an
 
 ### View
 ![App Screenshot](https://imgur.com/leSVbf4.png)
+<hr>
+
 ![App Screenshot](https://imgur.com/OvuV1Lu.png)
+<hr>
+
 ![App Screenshot](https://imgur.com/Z7s8d1l.png)
+<hr>
+
 ![App Screenshot](https://imgur.com/yRldmoZ.png)
+<hr>
+
 ![App Screenshot](https://imgur.com/jJhydMZ.png)
+<hr>
+
 ![App Screenshot](https://imgur.com/QmrgVM2.png)
+<hr>
+
 ![App Screenshot](https://imgur.com/hSLnva6.png)
+<hr>
+
 ![App Screenshot](https://imgur.com/7FfJlfr.png)
+<hr>
+
 ![App Screenshot](https://imgur.com/93Vszkq.png)
+<hr>
+
 ![App Screenshot](https://imgur.com/4JaRo2h.png)
+<hr>
+
 ![App Screenshot](https://imgur.com/GYfmmBH.png)
+<hr>
+
 ![App Screenshot](https://imgur.com/YtE6PrE.png)
+<hr>
+
 ![App Screenshot](https://imgur.com/QWSHTfF.png)
 
 ## Features
